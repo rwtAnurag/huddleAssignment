@@ -5,7 +5,7 @@ import "./VideoCallBlock.css"
 const VideoCallBlock =()=>{
     const [videoIcon,setVideoIcon] = useState("https://beta.huddle01.com/static/media/VideoOn.4fc76b20.svg");
     const [audioIcon,setAudioIcon] = useState("https://beta.huddle01.com/static/media/MicOn.d3732787.svg");
-    const [videoDropdown,setVideodropdown] = useState(" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAYAAADebrddAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABvSURBVHgBfY8xDoAgDEVb4+Tg4OIiKyv3P4Ezq6sn0MHFoX4SSEojNPlA+18pECFExEMrNaL4I5YJuc/FyMynAQM2B10DzAeHI3sBpvsBXyiyHlUmJANaFLjj0pvt21QDaTAlFWwaKpA6v9+g2dY/7Yc76JlWL/IAAAAASUVORK5CYII=")
+    const videoDropdown=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAYAAADebrddAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABvSURBVHgBfY8xDoAgDEVb4+Tg4OIiKyv3P4Ezq6sn0MHFoX4SSEojNPlA+18pECFExEMrNaL4I5YJuc/FyMynAQM2B10DzAeHI3sBpvsBXyiyHlUmJANaFLjj0pvt21QDaTAlFWwaKpA6v9+g2dY/7Yc76JlWL/IAAAAASUVORK5CYII=";
     const [videoDropdownClass,setVideodropdownClass] =useState("");
     const [onClickDropdown,setClickDropdown] = useState(true);
     const [AudioDropdownClass,setAudiodropdownClass] =useState("");
@@ -70,13 +70,13 @@ const VideoCallBlock =()=>{
                       </div>
                       <div className="playIcons" style={{height:"18%",paddingLeft:"7px",paddingRight:"7px",backgroundColor:" rgb(32, 32, 32)",borderBottomLeftRadius:"3px",borderBottomRightRadius:"3px"}}>
                          <span onClick={changeVideoIcon} className="vidoIcon">
-                              <img src={videoIcon}></img>
+                              <img alt="video icon" src={videoIcon}></img>
                          </span>
                               <span className="setting" style={{color:"white",marginLeft:"0.6rem"}}>Video Settings</span>
-                              <img onClick={changeVideoDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}} className={videoDropdownClass}></img>
-                         <span onClick={changeAudioIcon} className="audioIcon"> <img src={audioIcon}></img></span>
+                              <img  alt="audio icon"onClick={changeVideoDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}} className={videoDropdownClass}></img>
+                         <span onClick={changeAudioIcon} className="audioIcon"> <img alt="icons" src={audioIcon}></img></span>
                          <span className="setting"  style={{color:"white",fontWeight:"600",marginLeft:"1%"}}>Audio Settings</span>
-                         <img onClick={changeAudioDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}}class={AudioDropdownClass}></img>
+                         <img alt="dropdown" onClick={changeAudioDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}}class={AudioDropdownClass}></img>
                       </div>    
                       <div className="dropdown">
                             <div style={{ display: onClickDropdown? 'none' : null }} className="dropdowns1">
