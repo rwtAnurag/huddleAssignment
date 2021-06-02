@@ -12,7 +12,7 @@ const VideoCallBlock =()=>{
     const [onAudioClickDropdown,setAudioClickDropdown] = useState(true);
     const [openVideo,setOpenVideo] =useState(true);
     const [openAudio,setOpenAudio] =useState(true);
-    const Border="1px solid red";
+    // const Border="1px solid red";
     // const [playing,setPlaying] = useState();
     // const height=500;
     // const width=500;
