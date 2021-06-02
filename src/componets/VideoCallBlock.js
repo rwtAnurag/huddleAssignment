@@ -12,12 +12,37 @@ const VideoCallBlock =()=>{
     const [onAudioClickDropdown,setAudioClickDropdown] = useState(true);
     const [openVideo,setOpenVideo] =useState(true);
     const [openAudio,setOpenAudio] =useState(true);
-     
+    const Border="1px solid red";
+    // const [playing,setPlaying] = useState();
+    // const height=500;
+    // const width=500;
+    // const startVideo = () =>{
+    //        console.log("playing");
+    //        setPlaying(true);
+    //        navigator.getUserMedia(
+    //         {
+    //          video:true,
+    //         },
+    //         (stream) =>{
+    //             let video =document.getElementsByClassName("app__videoFeed")[0];
+    //             if(video){
+    //                 video.srcObject = stream;
+                   
+    //             }
+    //         },
+    //         (err) =>console.error(err)
+    //       );
+    // }
+    // const stopVideo = () =>{
+    //        setPlaying(false);
+    //        let video =document.getElementsByClassName("app__videoFeed")[0];
+    //        video.srcObject.getTracks()[0].stop();
+    // }
    const changeVideoIcon = ()=>{
-            if(openVideo===true)
-                setOpenVideo(false);
-            else
-               setOpenVideo(true);            
+    if(openVideo===true)
+    setOpenVideo(false);
+    else
+    setOpenVideo(true);        
         }
     const changeAudioIcon =()=>{
         if(openAudio===true)
@@ -64,16 +89,31 @@ const VideoCallBlock =()=>{
             <div className="videoBlock">
                   <div className="screen">
                       <div className="userLogo">
-                          <div className="defaultUser">
+                          {/* <div>
+                              <video
+                                height={height}
+                                width={width}
+                                muted
+                                autoPlay
+                                className="app__videoFeed"
+                              >
+                              </video>
+                          </div>
+                          <div>
+                              <button onClick={startVideo}>start</button>
+                              <button onClick={stopVideo}>stop</button>
+                          </div>
+                          */}
+                           <div className="defaultUser">
                                 
                           </div>
                       </div>
                       <div className="playIcons" style={{height:"18%",paddingLeft:"7px",paddingRight:"7px",backgroundColor:" rgb(32, 32, 32)",borderBottomLeftRadius:"3px",borderBottomRightRadius:"3px"}}>
                          <span onClick={changeVideoIcon} className="vidoIcon">
-                              <img alt="video icon" src={videoIcon}></img>
+                              <img  alt="video icon" src={videoIcon}></img>
                          </span>
                               <span className="setting" style={{color:"white",marginLeft:"0.6rem"}}>Video Settings</span>
-                              <img  alt="audio icon"onClick={changeVideoDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}} className={videoDropdownClass}></img>
+                              <img  alt="audio icon" onClick={changeVideoDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}} className={videoDropdownClass}></img>
                          <span onClick={changeAudioIcon} className="audioIcon"> <img alt="icons" src={audioIcon}></img></span>
                          <span className="setting"  style={{color:"white",fontWeight:"600",marginLeft:"1%"}}>Audio Settings</span>
                          <img alt="dropdown" onClick={changeAudioDropdown} src={videoDropdown} style={{cursor:"pointer",marginLeft:"0.5rem"}}class={AudioDropdownClass}></img>
