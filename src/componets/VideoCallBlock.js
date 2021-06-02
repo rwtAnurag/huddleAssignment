@@ -4,51 +4,51 @@ import "./VideoCallBlock.css"
 
 const VideoCallBlock =()=>{
     const [videoIcon,setVideoIcon] = useState("https://beta.huddle01.com/static/media/VideoOn.4fc76b20.svg");
-    const [audioIcon,setAudioIcon] = useState("https://beta.huddle01.com/static/media/MicOn.d3732787.svg");
+    const [audioIcon,setAudioIcon] = useState("https://beta.huddle01.com/static/media/MicOff.42f250f2.svg");
     const videoDropdown=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAYAAADebrddAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABvSURBVHgBfY8xDoAgDEVb4+Tg4OIiKyv3P4Ezq6sn0MHFoX4SSEojNPlA+18pECFExEMrNaL4I5YJuc/FyMynAQM2B10DzAeHI3sBpvsBXyiyHlUmJANaFLjj0pvt21QDaTAlFWwaKpA6v9+g2dY/7Yc76JlWL/IAAAAASUVORK5CYII=";
     const [videoDropdownClass,setVideodropdownClass] =useState("");
     const [onClickDropdown,setClickDropdown] = useState(true);
     const [AudioDropdownClass,setAudiodropdownClass] =useState("");
     const [onAudioClickDropdown,setAudioClickDropdown] = useState(true);
-    const [openVideo,setOpenVideo] =useState(true);
-    const [openAudio,setOpenAudio] =useState(true);
-    // const Border="1px solid red";
-    // const [playing,setPlaying] = useState();
-    // const height=500;
-    // const width=500;
-    // const startVideo = () =>{
-    //        console.log("playing");
-    //        setPlaying(true);
-    //        navigator.getUserMedia(
-    //         {
-    //          video:true,
-    //         },
-    //         (stream) =>{
-    //             let video =document.getElementsByClassName("app__videoFeed")[0];
-    //             if(video){
-    //                 video.srcObject = stream;
-                   
-    //             }
-    //         },
-    //         (err) =>console.error(err)
-    //       );
-    // }
-    // const stopVideo = () =>{
-    //        setPlaying(false);
-    //        let video =document.getElementsByClassName("app__videoFeed")[0];
-    //        video.srcObject.getTracks()[0].stop();
-    // }
-   const changeVideoIcon = ()=>{
-    if(openVideo===true)
-    setOpenVideo(false);
-    else
-    setOpenVideo(true);        
-        }
+    const [playing,setPlaying] = useState(false);
+    const height=250;
+    const width=600;
+
+    const startVideo = () =>{
+              console.log("start playing");
+              setPlaying(true);
+              navigator.getUserMedia(
+                {
+                 video:true,
+                },
+                (stream) =>{
+                    let video =document.getElementsByClassName("app__videoFeed")[0];
+                    if(video){
+                        video.srcObject = stream;
+                       
+                    }
+                },
+                (err) =>console.error(err)
+              );
+           
+    }
+    const stopVideo = () =>{
+           setPlaying(false);
+           let video =document.getElementsByClassName("app__videoFeed")[0];
+           video.srcObject.getTracks()[0].stop();
+    }
+//    const changeVideoIcon = ()=>{
+//     if(openVideo===true)
+//         setOpenVideo(false);
+//     else
+//     setOpenVideo(true);        
+//         }
     const changeAudioIcon =()=>{
-        if(openAudio===true)
-               setOpenAudio(false);
-            else
-               setOpenAudio(true);
+        if(audioIcon==="https://beta.huddle01.com/static/media/MicOff.42f250f2.svg")
+            setAudioIcon("https://beta.huddle01.com/static/media/MicOn.d3732787.svg");
+        else{
+            setAudioIcon("https://beta.huddle01.com/static/media/MicOff.42f250f2.svg");
+        }
     };
     const changeVideoDropdown =()=>{
         if(onClickDropdown===false)
@@ -65,16 +65,16 @@ const VideoCallBlock =()=>{
         
     }
     useEffect(()=>{
-        if(openVideo===true){
-            setVideoIcon("https://beta.huddle01.com/static/media/VideoOn.4fc76b20.svg");
+        console.log(playing);
+        if(playing===true){
+            console.log("uhh prajjwal")
+            setVideoIcon("https://beta.huddle01.com/static/media/VideoOn.4fc76b20.svg");    
         }
-        else
+        else{  
+            console.log("uhh anurag")
             setVideoIcon("https://beta.huddle01.com/static/media/VideoOff.0ae8beee.svg");
-        if(openAudio===true){
-            setAudioIcon("https://beta.huddle01.com/static/media/MicOn.d3732787.svg");
+           
         }
-        else
-        setAudioIcon("https://beta.huddle01.com/static/media/MicOff.42f250f2.svg");
         if(onClickDropdown===true)
           setVideodropdownClass("videodropdownClass")
         else
@@ -83,13 +83,15 @@ const VideoCallBlock =()=>{
           setAudiodropdownClass("videodropdownClass")
         else
           setAudiodropdownClass("");
-    },[openVideo,openAudio,onClickDropdown,onAudioClickDropdown])
+        
+    },[playing,onClickDropdown,onAudioClickDropdown])
     return (
         <div className="callBlock">
             <div className="videoBlock">
                   <div className="screen">
                       <div className="userLogo">
-                          {/* <div>
+                      {playing===true?
+                          <div>
                               <video
                                 height={height}
                                 width={width}
@@ -99,17 +101,15 @@ const VideoCallBlock =()=>{
                               >
                               </video>
                           </div>
-                          <div>
-                              <button onClick={startVideo}>start</button>
-                              <button onClick={stopVideo}>stop</button>
-                          </div>
-                          */}
+                     :
+                         
                            <div className="defaultUser">
                                 
                           </div>
+                        }
                       </div>
-                      <div className="playIcons" style={{height:"18%",paddingLeft:"7px",paddingRight:"7px",backgroundColor:" rgb(32, 32, 32)",borderBottomLeftRadius:"3px",borderBottomRightRadius:"3px"}}>
-                         <span onClick={changeVideoIcon} className="vidoIcon">
+                      <div  className="playIcons" style={{height:"18%",paddingLeft:"7px",paddingRight:"7px",backgroundColor:" rgb(32, 32, 32)",borderBottomLeftRadius:"3px",borderBottomRightRadius:"3px"}}>
+                         <span onClick={playing===false?startVideo:stopVideo} className="vidoIcon">
                               <img  alt="video icon" src={videoIcon}></img>
                          </span>
                               <span className="setting" style={{color:"white",marginLeft:"0.6rem"}}>Video Settings</span>
